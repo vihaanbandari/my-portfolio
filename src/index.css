@@ -108,4 +108,45 @@
     50% { transform: translate(20px,-30px) rotate(8deg); }
   }
   .float-slow { animation: float-slow 12s ease-in-out infinite; }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+  }
+  .wiggle { animation: wiggle 0.4s ease-in-out infinite; }
+
+  @keyframes pulse-ring {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(2.4); opacity: 0; }
+  }
+  .pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+
+  @keyframes spin-slow { to { transform: rotate(360deg); } }
+  .spin-slow { animation: spin-slow 18s linear infinite; }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .shimmer {
+    background: linear-gradient(90deg, transparent, hsl(var(--lime) / 0.5), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2.5s linear infinite;
+  }
+
+  @keyframes drift {
+    0%, 100% { transform: translate(0,0); }
+    33% { transform: translate(-15px, 10px); }
+    66% { transform: translate(20px, -8px); }
+  }
+  .drift { animation: drift 9s ease-in-out infinite; }
+
+  @keyframes slide-up-anim {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .slide-up { animation: slide-up-anim 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+  .magnet { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .magnet:hover { transform: scale(1.06) rotate(-1.5deg); }
 }
