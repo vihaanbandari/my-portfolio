@@ -57,6 +57,10 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        ink: 'hsl(var(--ink))',
+        paper: 'hsl(var(--paper))',
+        lime: 'hsl(var(--lime))',
+        hot: 'hsl(var(--hot))',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -67,12 +71,6 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Instrument Serif', 'serif'],
         mono: ['JetBrains Mono', 'monospace'],
-      },
-      colors: {
-        ink: 'hsl(var(--ink))',
-        paper: 'hsl(var(--paper))',
-        lime: 'hsl(var(--lime))',
-        hot: 'hsl(var(--hot))',
       },
       keyframes: {
         "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },
