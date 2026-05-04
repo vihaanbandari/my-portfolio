@@ -467,7 +467,7 @@ const RevealCard = ({ label, icon, value, revealed, onReveal, onCopy, copied, hr
 const Footer = () => (
   <footer className="bg-paper px-6 md:px-10 py-10 border-t-2 border-ink">
     <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row gap-4 justify-between items-center font-mono text-xs">
-      <span>© {new Date().getFullYear()} Vihaan Bandari — handcrafted in Arkansas</span>
+      <span>© {new Date().getFullYear()} Vihaan Bandari — made in my bedroom 🛏️</span>
       <span className="text-muted-foreground">no templates were harmed in the making of this site</span>
     </div>
   </footer>
