@@ -389,8 +389,10 @@ const Contact = () => {
         </h2>
 
         <p className="mt-10 max-w-xl text-lg text-paper/80">
-          Tap a card to reveal. Click again to copy. Then send me a message — I usually reply within a few hours.
+          Tap a card to reveal. Click again to copy. Peek at the clocks below to see if I'm awake — I usually reply within a few hours.
         </p>
+
+        <TimeCompare />
 
         <div className="mt-12 grid md:grid-cols-2 gap-6 max-w-4xl">
           <RevealCard
