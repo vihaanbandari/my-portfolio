@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Mail, Phone, Copy, Check, Sparkles, Code2, Rocket, Star } from "lucide-react";
+import { ArrowUpRight, Mail, Phone, Copy, Check, Sparkles, Code2, Rocket, Star, Moon, Sun, Coffee, Zap } from "lucide-react";
 
 const EMAIL = "bandarivihaan50@gmail.com";
 const PHONE = "(501) 550-6132";
