@@ -96,7 +96,7 @@ const Hero = () => {
   useEffect(() => {
     const update = () => {
       const d = new Date();
-      setTime(d.toLocaleTimeString("en-US", { timeZone: "America/Chicago", hour: "2-digit", minute: "2-digit", second: "2-digit" }));
+      setTime(d.toLocaleTimeString("en-US", { timeZone: "America/New_York", hour: "2-digit", minute: "2-digit", second: "2-digit" }));
     };
     update();
     const i = setInterval(update, 1000);
@@ -110,22 +110,20 @@ const Hero = () => {
           <span className="flex items-center gap-2 bg-ink text-paper px-3 py-1.5 rounded-full">
             <span className="w-2 h-2 rounded-full bg-lime blink" /> available for new work
           </span>
-          <span className="text-muted-foreground">Little Rock, AR · {time} CT</span>
+          <span className="text-muted-foreground">Tampa, FL · {time} ET</span>
         </div>
 
         <h1 className="font-display text-[16vw] md:text-[12vw] leading-[0.85] tracking-tighter">
-          building the
-          <br />
-          <span className="relative inline-block">
-            <span className="text-stroke">internet's</span>
-            <span className="absolute -top-4 -right-6 md:-top-8 md:-right-10 text-lime float-slow">
+          let me
+          <span className="relative inline-block ml-4">
+            <span className="text-lime float-slow inline-block align-middle">
               <Sparkles className="w-10 h-10 md:w-20 md:h-20" strokeWidth={1.2} />
             </span>
           </span>
           <br />
-          most <span className="bg-lime px-4 not-italic font-sans font-black text-[10vw] md:text-[7vw] inline-block -rotate-2 align-middle">UNFORGETTABLE</span>
+          <em className="italic">build</em> your
           <br />
-          websites.
+          <span className="bg-lime px-4 not-italic font-sans font-black text-[12vw] md:text-[9vw] inline-block -rotate-2 align-middle">WEBSITE.</span>
         </h1>
 
         <div className="mt-16 grid md:grid-cols-12 gap-10">
