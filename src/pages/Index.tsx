@@ -206,8 +206,8 @@ const About = () => (
         <div className="mt-16">
           <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">stack</span>
           <div className="flex flex-wrap gap-2 mt-3">
-            {stack.map((t) => (
-              <span key={t} className="border border-ink rounded-full px-4 py-1.5 text-sm font-mono hover:bg-ink hover:text-paper transition-colors cursor-default">{t}</span>
+            {stack.map((t, i) => (
+              <span key={t} style={{ animationDelay: `${i * 40}ms` }} className="slide-up border border-ink rounded-full px-4 py-1.5 text-sm font-mono hover:bg-ink hover:text-paper hover:-rotate-3 hover:scale-110 transition-all cursor-default">{t}</span>
             ))}
           </div>
         </div>
