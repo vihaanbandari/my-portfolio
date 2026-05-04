@@ -466,6 +466,80 @@ const RevealCard = ({ label, icon, value, revealed, onReveal, onCopy, copied, hr
   </div>
 );
 
+const TimeCompare = () => {
+  const [now, setNow] = useState(new Date());
+  useEffect(() => {
+    const i = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(i);
+  }, []);
+
+  const userTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const fmt = (tz: string) =>
+    now.toLocaleTimeString("en-US", { timeZone: tz, hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
+  const hourIn = (tz: string) =>
+    parseInt(now.toLocaleString("en-US", { timeZone: tz, hour: "2-digit", hour12: false }));
+
+  const myHour = hourIn("America/New_York");
+  const userHour = hourIn(userTz);
+
+  const status = (h: number) => {
+    if (h >= 0 && h < 7) return { label: "sleeping 😴", icon: Moon, mood: "bg-ink text-paper", glow: "bg-paper/20" };
+    if (h >= 7 && h < 10) return { label: "morning coffee ☕", icon: Coffee, mood: "bg-hot text-ink", glow: "bg-hot" };
+    if (h >= 10 && h < 18) return { label: "deep in code ⚡", icon: Zap, mood: "bg-lime text-ink", glow: "bg-lime" };
+    if (h >= 18 && h < 23) return { label: "still shipping 🚀", icon: Sun, mood: "bg-lime text-ink", glow: "bg-lime" };
+    return { label: "winding down 🌙", icon: Moon, mood: "bg-ink text-paper border border-paper/40", glow: "bg-paper/20" };
+  };
+
+  const me = status(myHour);
+  const you = status(userHour);
+  const diff = ((myHour - userHour + 24) % 24);
+  const diffStr = diff === 0 ? "same time zone" : diff <= 12 ? `${diff}h ahead of you` : `${24 - diff}h behind you`;
+
+  return (
+    <div className="mt-12 max-w-4xl border border-paper/20 rounded-2xl p-6 md:p-8 bg-paper/5 backdrop-blur-sm overflow-hidden relative">
+      <div className="absolute top-0 left-0 right-0 h-px shimmer" />
+      <div className="flex items-center justify-between mb-6">
+        <span className="font-mono text-xs uppercase tracking-widest text-paper/60">[ live · time sync ]</span>
+        <span className="font-mono text-xs text-paper/50">{diffStr}</span>
+      </div>
+      <div className="grid grid-cols-2 gap-px bg-paper/20 rounded-xl overflow-hidden">
+        <ClockCard label="you" tz={userTz} time={fmt(userTz)} status={you} />
+        <ClockCard label="me · tampa" tz="America/New_York" time={fmt("America/New_York")} status={me} mine />
+      </div>
+      <div className="mt-6 flex items-center gap-3 font-mono text-xs">
+        <span className={`relative flex h-2 w-2`}>
+          <span className={`absolute inline-flex h-full w-full rounded-full ${me.glow} opacity-75 pulse-ring`} />
+          <span className={`relative inline-flex rounded-full h-2 w-2 ${me.glow}`} />
+        </span>
+        <span className="text-paper/70">vihaan is currently <span className="text-lime">{me.label}</span></span>
+      </div>
+    </div>
+  );
+};
+
+const ClockCard = ({ label, time, status, mine }: any) => {
+  const Icon = status.icon;
+  return (
+    <div className={`relative p-6 ${status.mood} transition-colors duration-500 overflow-hidden`}>
+      <div className={`absolute -top-10 -right-10 w-40 h-40 rounded-full ${status.glow} blur-3xl opacity-30 drift`} />
+      <div className="relative">
+        <div className="flex items-center justify-between mb-4">
+          <span className="font-mono text-[10px] uppercase tracking-widest opacity-70">{label}</span>
+          <Icon className="w-4 h-4 opacity-80" />
+        </div>
+        <div className="font-display text-4xl md:text-5xl tracking-tight tabular-nums">{time}</div>
+        <div className="mt-2 font-mono text-xs opacity-80">{status.label}</div>
+        {mine && (
+          <div className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest">
+            <span className="w-1.5 h-1.5 rounded-full bg-current blink" />
+            real-time
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const Footer = () => (
   <footer className="bg-paper px-6 md:px-10 py-10 border-t-2 border-ink">
     <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row gap-4 justify-between items-center font-mono text-xs">
